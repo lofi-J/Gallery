@@ -21,6 +21,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, {loader: 'css-loader'}]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.ttf$/,
+        type: 'asset/resource',
+        use: [{loader: 'file-loader', options: {name: '[name].[ext]', outputPath: 'fonts/'}}]
       }
     ]
   },
@@ -33,6 +42,7 @@ module.exports = {
     port: 8080,
     hot: true,
     open: true,
+    historyApiFallback: true,
     client: {
       overlay: {
         warnings: true,
